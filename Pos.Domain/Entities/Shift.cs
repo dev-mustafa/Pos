@@ -1,0 +1,22 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Pos.Domain.Entities
+{
+    public class Shift : TenantBase
+    {
+        public int Id { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public double Balance { get; set; }
+        public bool IsLast { get; set; }
+        public bool IsClosing { get; set; }
+        public string UserId { get; set; }
+        public int? MachineId { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        public virtual Machine Machine { get; set; }
+
+        [NotMapped]
+        public bool IsClosed => EndDate.HasValue;
+    }
+}
