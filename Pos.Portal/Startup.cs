@@ -15,6 +15,7 @@ namespace Pos.Portal
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            //test
         }
 
         private IConfiguration Configuration { get; }
