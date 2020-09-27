@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Pos.Domain.Entities
+﻿namespace Pos.Domain.Entities
 {
-  public  class ProductProperty : TenantBase
+  public  class ProductProperty :TenantBase
     {
         public int ProductId { get; set; }
         public int PropertyId { get; set; }

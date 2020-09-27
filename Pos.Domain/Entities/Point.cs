@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Pos.Domain.Entities
 {
-    public class Point : TenantBase
+    public class Point : EntityBase
     {
         public Point()
         {
@@ -13,7 +13,7 @@ namespace Pos.Domain.Entities
             Damageds = new List<Damaged>();
             Stocks = new List<Stock>();
         }
-        public int Id { get; set; }
+
         public string Name { get; set; }
         public string Address { get; set; }
         public PointType PointType { get; set; }

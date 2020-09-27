@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Pos.Domain.Entities
 {
-    public class Income : TenantBase
+    public class Income : EntityBase
     {
         public Income()
         {
             Installments = new List<Installment>();
         }
-        public int Id { get; set; }
+
         public DateTime Date { get; set; }
         public double Value { get; set; }
         public int PersonId { get; set; }

@@ -24,11 +24,12 @@ namespace Pos.Domain.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            // primary keys
             modelBuilder.Entity<ProductProperty>().HasKey(c => new { c.ProductId, c.PropertyId });
             modelBuilder.Entity<Stock>().HasKey(c => new { c.ProductId, c.PointId });
-            modelBuilder.Entity<CategoryUnit>().HasKey(c => new { c.CategoryId, c.UnitId });
+            modelBuilder.Entity<CategoryUnit>().HasKey(c => new {  c.CategoryId, c.UnitId });
             modelBuilder.Entity<CategoryProperty>().HasKey(c => new { c.CategoryId, c.PropertyId });
+          // foreign keys
             modelBuilder.Entity<Transfer>().HasOne(t => t.FromPoint).WithMany(s => s.InTransfares)
                 .HasForeignKey(s => s.FromPointId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Transfer>().HasOne(t => t.ToPoint).WithMany(s => s.OutTransfares)
@@ -37,6 +38,23 @@ namespace Pos.Domain.Infrastructure
                 .HasForeignKey(t => t.TransactionId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<TransactionDetailBarcode>().HasOne(i => i.TransactionDetail).WithMany(t => t.Barcodes)
                 .HasForeignKey(t => t.TransactionDetailId).OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<BankAccount>().HasOne(b => b.Bank).WithMany(b => b.BankAccounts)
+                .HasForeignKey(b => b.BankId).OnDelete(DeleteBehavior.Restrict);
+           
+            modelBuilder.Entity<Cheque>().HasOne(b => b.BankAccount).WithMany(b => b.Cheques)
+                .HasForeignKey(b => b. BankAccountId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Cheque>().HasOne(t => t.Transaction).WithMany(t => t.Cheques)
+                .HasForeignKey(t => t.TransactionId).OnDelete(DeleteBehavior.Restrict);
+         
+            modelBuilder.Entity<BankTransaction>().HasOne(b => b.BankAccount).WithMany(b => b.BankTransactions)
+                .HasForeignKey(b => b.BankAccountId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<BankTransaction>().HasOne(t => t.Transaction).WithOne(t => t.BankTransaction)
+                .HasForeignKey<BankTransaction>(t => t.TransactionId).OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Category>().HasMany(c => c.Products).WithOne(p => p.Category)
+                .HasForeignKey(c => c.CategoryId).OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(modelBuilder);
         }
         public virtual DbSet<Shift> Shifts { get; set; }

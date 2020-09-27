@@ -3,13 +3,13 @@
 namespace Pos.Domain.Entities
 {
 
-   public class Transfer : TenantBase
+   public class Transfer : EntityBase
     {
         public Transfer()
         {
             TransfareDetails = new List<TransferDetail>();
         }
-        public int Id { get; set; }
+
         public int FromPointId { get; set; }
         public virtual Point FromPoint { get; set; }
         public int ToPointId { get; set; }

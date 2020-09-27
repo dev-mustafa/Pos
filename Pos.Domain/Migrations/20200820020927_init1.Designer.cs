@@ -10,8 +10,8 @@ using Pos.Domain.Infrastructure;
 namespace Pos.Domain.Migrations
 {
     [DbContext(typeof(PosContext))]
-    [Migration("20200814224200_first")]
-    partial class first
+    [Migration("20200820020927_init1")]
+    partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1026,7 +1026,7 @@ namespace Pos.Domain.Migrations
                     b.HasOne("Pos.Domain.Entities.Bank", "Bank")
                         .WithMany("BankAccounts")
                         .HasForeignKey("BankId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

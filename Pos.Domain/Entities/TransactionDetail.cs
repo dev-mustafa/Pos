@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pos.Domain.Entities
 {
-    public class TransactionDetail : TenantBase
+    public class TransactionDetail : EntityBase
     {
         public TransactionDetail()
         {
             Barcodes = new List<TransactionDetailBarcode>();
         }
-        public int Id { get; set; }
+
         public double Price { get; set; }
         public double Amount { get; set; }
         [NotMapped]

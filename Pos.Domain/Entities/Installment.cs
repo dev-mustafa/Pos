@@ -1,11 +1,10 @@
 ﻿using System;
-using Pos.Domain.Enums;
 
 namespace Pos.Domain.Entities
 {
-    public class Installment : TenantBase
+    public class Installment : EntityBase
     {
-        public int Id { get; set; }
+
 
         public double Value { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace Pos.Domain.Entities
 {
-    public class Product : TenantBase
+    public class Product : EntityBase
     {
         public Product()
         {
@@ -13,7 +13,7 @@ namespace Pos.Domain.Entities
             DamagedDetails = new List<DamagedDetail>();
             Stores = new List<Stock>();
         }
-        public int Id { get; set; }
+
         public string Name { get; set; }
         public  string Barcode { get; set; }
         public double SalePrice { get; set; }   

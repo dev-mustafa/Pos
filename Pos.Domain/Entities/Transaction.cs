@@ -6,7 +6,7 @@ using Pos.Domain.Enums;
 
 namespace Pos.Domain.Entities
 {
-    public class Transaction : TenantBase
+    public class Transaction : EntityBase
     {
         public Transaction()
         {
@@ -15,7 +15,7 @@ namespace Pos.Domain.Entities
             Installments = new List<Installment>();
             Cheques = new List<Cheque>();
         }
-        public int Id { get; set; }
+
         public string Number { get; set; }
         public DateTime Date { get; set; }
         public double Paid { get; set; }

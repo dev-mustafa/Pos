@@ -2,7 +2,7 @@
 
 namespace Pos.Domain.Entities
 {
-    public class Category : TenantBase
+    public class Category : EntityBase
     {
         public Category()
         {
@@ -10,7 +10,7 @@ namespace Pos.Domain.Entities
             Units = new List<CategoryUnit>();
             Properties = new List<CategoryProperty>();
         }
-        public int Id { get; set; }
+
         public string Name { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<CategoryUnit> Units { get; set; }

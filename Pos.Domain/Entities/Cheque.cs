@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Pos.Domain.Entities
 {
-    public class Cheque : TenantBase
+    public class Cheque : EntityBase
     {
-        public int Id { get; set; }
+
 
         public double Value { get; set; }
 

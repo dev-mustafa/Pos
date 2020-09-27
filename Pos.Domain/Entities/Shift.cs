@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pos.Domain.Entities
 {
-    public class Shift : TenantBase
+    public class Shift : EntityBase
     {
-        public int Id { get; set; }
+
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public double Balance { get; set; }
